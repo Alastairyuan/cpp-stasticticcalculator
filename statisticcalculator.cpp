@@ -31,7 +31,8 @@ int main() {
         count++;
         total += value;
 
-        if (count == 1) {
+        if (count == 1) 
+        {
             minVal = value;
             maxVal = value;
         } else {
