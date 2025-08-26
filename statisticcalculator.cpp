@@ -1,10 +1,10 @@
-#include <iostream>
-#include <string>
-#include <limits>
-using namespace std;
+#include <splashkit.h>
+using std::stoi;
+using std::to_string;
 
-int main() {
-    cout << "Welcome to the simple stats calculator:" << endl;
+int main() 
+{
+    write_line("Welcome to the simple stats calculator:");
 
     int count = 0;
     double total = 0.0;
@@ -12,19 +12,19 @@ int main() {
     bool keepGoing = true;
 
     while (keepGoing) {
-        cout << "Enter value: ";
+        write("Enter value: ");
         string line;
-        getline(cin, line);
+        line = read_line();
 
         if (line.empty()) {
-            cout << "You must enter a value." << endl;
+            write_line("You must enter a value.");
             continue;
         }
         double value;
         try {
-            value = stod(line); // string 转 double
+            value = stod(line);
         } catch (...) {
-            cout << "The input format is incorrect. Please enter valid number" << endl;
+            write_line("The input format is incorrect. Please enter valid number");
             continue;
         }
 
@@ -42,18 +42,18 @@ int main() {
 
         double average = total / count;
 
-        cout << "Count: " << count << endl;
-        cout << "Total: " << total << endl;
-        cout << "Min: " << minVal << endl;
-        cout << "Max: " << maxVal << endl;
-        cout << "Average: " << average << endl;
+        write_line("Count: " + to_string(count));
+        write_line("Total: " + to_string(total));
+        write_line("Min: " + to_string(minVal));
+        write_line("Max: " + to_string(maxVal));
+        write_line("Average: " + to_string(average));
 
-        cout << "\nAdd another value: [y/n] ";
+        write("\nAdd another value: [y/n] ");
         string response;
-        getline(cin, response);
+        response = read_line();
         keepGoing = (response == "y" || response == "Y");
     }
 
-    cout << "I hope you got the information you are after!" << endl;
+    write_line("I hope you got the information you are after!");
     return 0;
 }
